@@ -1,0 +1,250 @@
+// menu================
+.navbar-section{
+    background: $bg-color;
+    width:$nav-width;
+}
+
+.navbar {
+    z-index: 1025;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    padding: 80px 20px 80px 70px;
+
+    .nav-item {
+
+        .nav-link {
+            color: $color-white;
+            @include font-style(20, 26, 800);
+            text-transform: uppercase;
+            padding: 0;
+            padding-bottom: 30px;
+            position: relative;
+            width: fit-content;
+
+            &::after {
+                position: absolute;
+                content: "";
+                width: 3px;
+                height: 3px;
+                left: 100%;
+                top: 18px;
+                background: $color-white;
+                transition: all .5s;
+                animation: borderRight .5s reverse;
+            }
+
+            &:hover,
+            &.active {
+                color: $main-color;
+
+                &::after {
+                    background: $main-color;
+                    animation: borderLeft .5s forwards;
+                }
+            }
+        }
+    }
+}
+@keyframes borderLeft {
+    0%{
+        top: 18px;
+        left: 100%;
+    }
+    50%{
+        left: 0%;
+        width: 3px;
+        top: 18px;
+    }
+    80%{
+        left: 0%;
+        width: 3px;
+        top: 30px;
+    }
+    100%{
+        top: 30px;
+        left: 0%;
+        width: 100%;
+        background: $main-color;
+    }
+}
+@keyframes borderRight {
+    0%{
+        top: 18px;
+        left: 100%;
+    }
+    50%{
+        left: 0%;
+        width: 3px;
+        top: 18px;
+        background: $main-color;
+    }
+    80%{
+        left: 0%;
+        width: 3px;
+        top: 30px;
+    }
+    100%{
+        top: 30px;
+        left: 0%;
+        width: 100%;
+    }
+}
+.navbar-brand {
+    margin-bottom: 130px;
+    img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    span {
+        display: block;
+        margin-top: 30px;
+        color: $color-white;
+        @include font-style(22, 32, 900);
+    }
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+    background-image: none !important;
+    position: relative;
+}
+
+.overley {
+    background-color: #000;
+    opacity: .5;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 1024;
+}
+
+.dropdown-menu {
+    display: block;
+    top: 80px;
+    visibility: hidden;
+    transition: ease-in-out .3s;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #fff;
+    background-color: #0d6efd;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #1e2125;
+    background-color: #e9ecef;
+}
+.social-icon{
+    margin-top: 110px;
+    .nav-link{
+        padding: 0 30px 0 0;
+        color: $color-white;
+        transition: all .5s;
+        &:hover{
+            color: $main-color;
+        }
+    }
+}
+
+@media(min-width:992px) {
+    .dropdown {
+        &:hover {
+            .dropdown-menu {
+                top: 60px;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+@media(max-width:991px) {
+    .navbar-collapse {
+        display: block !important;
+        position: fixed;
+        height: 100vh;
+        background: #f8f9fa;
+        width: 300px;
+        padding-left: 16px;
+        top: 56px;
+        left: -300px;
+        transition: all .3s;
+
+        &.show {
+            left: 0px;
+        }
+    }
+
+    .navbar-toggler {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-color: #181819 !important;
+
+        &.nav-collapse {
+            .navbar-toggler-icon {
+                border-color: transparent;
+                transition: all .2s;
+
+                &:after {
+                    left: 0px;
+                    top: 0px;
+                    transform: rotate(-45deg);
+                }
+
+                &:before {
+                    left: 0px;
+                    bottom: -1px;
+                    transform: rotate(45deg);
+                }
+
+
+            }
+        }
+
+        .navbar-toggler-icon {
+            border: 1px solid #181819;
+            transition: all .8s;
+            height: 1px;
+
+            &:after {
+                position: absolute;
+                content: "";
+                border: 1px solid #181819;
+                height: 1px;
+                width: 30px;
+                left: -1px;
+                top: -8px;
+                transition: all .5s;
+                transform: rotate(0deg);
+            }
+
+            &:before {
+                position: absolute;
+                content: "";
+                border: 1px solid #181819;
+                height: 1px;
+                width: 30px;
+                left: -1px;
+                bottom: -8px;
+                transition: all .5s;
+                transform: rotate(0deg);
+            }
+
+        }
+    }
+
+}
